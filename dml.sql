@@ -2486,22 +2486,530 @@ INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALU
 INSERT INTO tblCardAnnualFee (card_annual_fee_seq, annual_fee_no, card_seq) VALUES (card_annual_fee_seq.nextVal, 'D0', 97);
 
 --tblCardUsageGuide
-INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '전월 이용실적 기준', '전월 1일 ~ 말일까지 알뜰교통플러스카드의 일시불 및 할부 승인 금액 기준
-해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입 완료 기준
-취소 금액은 취소 전표가 당사에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '할인서비스 제외 대상', '- 무이자할부 이용금액, 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액, 아파트관리비, 초·중·고등학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(대학원)등록금, 국세, 지방세, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 신차구매청구(환급) 할인 전표 전체, 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '전월 이용실적 기준', '- 전월 1일 ~ 말일(승인시점 기준) ''KB국민 WE:SH All 카드'' 일시불 및 할부 승인금액 기준(가족카드 포함)
+- 해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입완료 기준
+- 취소금액은 취소전표가 KB국민카드에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 1, '전월 이용실적 제외 대상', '- ''KB국민 WE:SH All 카드'' 자동납부(쇼핑 멤버십/OTT/이동통신) 할인 받은 이용건(해당 이용금액 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액, 아파트관리비, 초·중·고등학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(대학원)등록금, 국세, 지방세, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 무승인전표(교통요금/자판기/터널통행료/항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '할인서비스 제외 대상', '- 무이자할부 이용금액, 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액, 아파트관리비, 초·중·고등학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(대학원)등록금, 각종 세금, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 교통요금, 무승인전표(자판기, 터널통행료, 항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '전월 이용실적 기준', '- 전월 1일 ~ 말일(승인시점 기준) ''KB국민 My WE:SH 카드'' 일시불 및 할부 승인금액 기준
+- 해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입완료 기준
+- 취소금액은 취소전표가 KB국민카드에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '전월 이용실적 제외 대상', '- KB국민 My WE:SH 카드로 할인 받은 이용건(해당 이용금액 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액, 아파트관리비, 초·중·고등학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(대학원)등록금, 각종 세금, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 교통요금, 무승인전표(자판기, 터널통행료, 항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '선택서비스 안내사항', '- 선택서비스 변경 시 신청일 기준 다음달 1일부터 적용(월 단위 제공)
+- 변경 방법 : 모바일앱/홈페이지/고객센터(☎1588-1688)');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 2, '가족카드 발급 관련 안내', '- KB국민 My WE:SH 카드는 가족카드 발급이 불가
+- 본인 카드만 발급 가능');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 3, '할인서비스 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 3, '이용실적 기준', '- 전월 1일 ~ 말일(승인시점 기준) ''KB국민 Our WE:SH 카드'' 일시불 및 할부 승인금액(가족카드 포함)
+- 해외이용금액은 전월 1일 ~ 말일까지 일시불 매입 완료 기준
+- 취소금액은 취소전표가 당사에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 3, '전월 이용실적 제외 대상', '- ''KB국민 Our WE:SH 카드''로 할인 받은 이용건(해당 이용금액 전체), 취소금액, 단기카드대출(현금서비스), 장기카드대출(카드론), 국세, 지방세, 공과금(전기/수도), 아파트관리비, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 초·중·고등학교 납입금 전체(수업료/교육비/현장학습비/급식비), 대학(대학원)등록금, 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 상품권 및 선불카드(선불전자지급수단 포함) 구입·충전 금액, 교통요금, 무승인전표(자판기, 터널통행료, 항공기내 이용 등)');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 3, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 4, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 + 3%p, 최고 연 20% 이내
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 4, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 4, '전월 이용실적 제외 대상', '- ''American Express Blue KB Kookmin Card''로 할인받은 이용건(해당 이용금액 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전 금액, 아파트관리비, 유치원/초·중·고 학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(원) 등록금, 국세, 지방세, 각종 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 무승인전표(자판기/터널이용료/항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 4, '전월 이용실적 기준', '- 전월 1일 ~ 말일(승인시점 기준) ''American Express Blue KB Kookmin Card'' 일시불 및 할부 승인금액 기준(가족카드포함)
+- 해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입완료 기준
+- 취소금액은 취소 전표가 당사에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 5, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 + 3%p, 최고 연 20% 이내
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 5, '상품 서비스 할인 제외 대상', '무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전금액, KB Pay 외 다른 결제수단 이용 건');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 5, '전월 이용실적 제외 대상', '''American Express Rose Gold KB Kookmin Card''로 할인받은 이용건(해당 이용금액 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전 금액, 아파트관리비, 유치원/초·중·고 학교 납입금 전체, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 대학(원) 등록금, 국세, 지방세, 각종 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 무승인전표(자판기/터널이용료/항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 6, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 6, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 7, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 7, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 8, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 8, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 9, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 9, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 10, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 10, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 11, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 11, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 12, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 12, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 13, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 13, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 14, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 14, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 15, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 15, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 16, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 16, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 17, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 17, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 18, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 18, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 19, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 19, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 20, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 20, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 21, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 21, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 22, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 22, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 23, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 23, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 24, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 24, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 25, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 25, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 26, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 26, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 27, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 27, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 28, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 28, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 29, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 29, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 30, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 30, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 31, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 31, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 32, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 32, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 33, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 33, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 34, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 34, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 35, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 35, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 36, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 36, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 37, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 37, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 38, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 38, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 39, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 39, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 40, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 40, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 41, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 41, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 42, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 42, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 43, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 43, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 44, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 44, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 45, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 45, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 46, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 46, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 47, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 47, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 48, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 48, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 49, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 49, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 50, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 50, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 51, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 51, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 52, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 52, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 53, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 53, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 54, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 54, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 55, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 55, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 56, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 56, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 57, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 57, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 58, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 58, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 59, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 59, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 60, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 60, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 61, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 61, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 62, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 62, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 63, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 63, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 64, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 64, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 65, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 65, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 66, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 66, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 67, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 67, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 68, '상품 서비스 할인 제외 대상', '- 무이자할부 이용금액, 상품권 및 선불카드(선불전자지급수단 포함) 구입 및 충전 금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 68, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+※ 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+※ 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부 수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '전월 이용 실적 기준', '- 전월 1일 ~ 말일까지 KB국민 알뜰교통플러스카드의 일시불 및 할부 승인 금액 기준
+- 해외 이용금액은 전월 1일 ~ 말일까지 일시불 매입 완료 기준
+- 취소 금액은 취소 전표가 당사에 접수된 월의 실적에서 차감');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '전월 이용 실적 제외 대상', '- KB국민 알뜰교통플러스카드로 청구할인 서비스를 적용 받은 이용건(해당 매출 전체), 단기카드대출(현금서비스), 장기카드대출(카드론), 아파트관리비, 초/중/고 학교납입금 전체(수업료/교육비/현장학습비/급식비 등), 대학(원)등록금, 정부지원금(보육료/유치원보조비/바우처 이용금액 등), 각종 세금, 공과금(전기/수도 등), 4대 사회보험료(건강/연금/고용/산재), 각종 수수료 및 이자, 연체료, 연회비, 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 무승인전표(대중교통, 공항버스, 자판기, 터널통행료, 항공기내 이용 등), 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '할인 제외 대상', '- 무이자할부, 상품권 및 선불카드(선불전자지급수단 포함) 구입/충전금액, 연체료, 취소금액');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '연체이자율', '- 연체이자율 : 회원별/이용상품별 정상이자율 +3%p, 최고 연 20%
+- 단, 연체발생시점에 정상이자율이 없는 경우 아래와 같이 적용함
+- 일시불 거래 연체시 : 거래발생시점의 최소기간(2개월) 유이자 할부 수수료율 적용
+- 무이자할부 거래 연체시 : 거래발생시점의 동일한 할부계약기간의 유이자할부수수료율 적용');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '해외 이용 확인사항', '- 해외 이용시(해외사이트 거래 포함) 미화(USD)기준 거래미화금액에 접수일의(KB국민은행) 최초고시 전신환 매도율을 적용한 후, 국제브랜드사가 부과하는 국제브랜드 수수료(VISA 1.1%)와 KB국민카드가 부과하는 해외서비스 수수료 (0.25%)를 포함하여 원화로 청구됩니다. 이 경우 KB국민카드의 해외서비스 수수료는 국제브랜드 수수료를 제외하고 산정됩니다.
+- 해외 이용시 청구금액 산출방법
+* 해외 이용시 청구금액 = (거래미화금액 X 전신환매도율¹) + 국제브랜드 수수료² + 해외서비스 수수료³
+
+전신환 매도율 : 접수일의 KB국민은행 최초고시 전신환매도율
+국제브랜드 수수료 = (거래미화금액 X 국제브랜드 이용수수료율) X 전신환매도율
+해외서비스 수수료 = (거래미화금액 X 해외서비스 수수료율) X 전신환매도율
+해당 내용은 해외원화결제(DCC) 서비스 수수료가 없는 경우이며, 해외원화결제(DCC) 서비스 이용 시 추가 수수료가 발생할 수 있으니 유의하시기 바랍니다.
+
+- 해외원화결제(DCC) 차단 서비스 이용방법 : KB국민카드 홈페이지/모바일앱 > 서비스 > 해외이용서비스 > 해외원화결제차단서비스');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '기타', '- KB국민 알뜰교통플러스카드 업종에 따른 청구 할인서비스는 대상 가맹점이 KB국민카드의 업종분류기준 상 해당 업종에 한하여 제공합니다.
+- 별도 전용 가맹점번호로 승인되는 PG(결제대행)업체 또는 일부 간편결제(Pay) 이용 시 할인대상에서 제외될 수 있습니다.
+- KB국민 알뜰교통플러스카드 할인 서비스 대상 업종은 해당 가맹점 사업자번호로 당사 영업점 및 고객센터 1588-1688, KB국민은행 영업점을 통해 확인이 가능합니다.
+- 전표 매입 순서대로 월간 할인한도내 서비스가 적용되며, 잔여 할인한도는 이월되지 않습니다.
+- 할인 받은 이용 건을 취소할 경우 취소전표가 실시간 접수되지 않아 할인 한도가 즉시 복원되지 않을 수 있습니다.
+- 결제계좌 개설 기관의 영업 마감시간(16시) 이후 결제계좌에 입금된 금액에 대해서는 결제계좌 개설 기관의 사정에 따라 당일 출금하지 못하여 연체로 처리될 수 있으므로 유의하시기 바랍니다. 자동이체 업무 마감시간 이후 당사 홈페이지/모바일* 등에서 바로출금(즉시결제) 또는 가상계좌 입금(송금납부)을 통해 당일 결제가 가능합니다.
+* 세부내용 : KB국민카드 홈페이지 > MY KB > 바로출금결제 또는 가상계좌결제 참조
+
+- KB국민 알뜰교통플러스카드는 기본 포인트리가 적립되지 않습니다.
+- 단, KB국민카드 스타샵 가맹점에서 제공해드리는 포인트는 적립됩니다.');
+INSERT INTO tblCardUsageGuide (card_usage_guide_seq, card_seq, type, content) VALUES (card_usage_guide_seq.nextVal, 69, '가족카드 발급 관련 안내', '- KB국민 알뜰교통플러스카드는 가족카드 발급이 불가능합니다.');
 
 -- tblBenefits
-INSERT INTO tblBenefits (benefits_seq, type, subject, content, prev_month_perf, rate, limit) VALUES (benefits_seq.nextVal, 1, '대중교통', '- 대중교통 버스, 지하철 이용시 10% 할인', 30, 10, 10000);
-INSERT INTO tblBenefits (benefits_seq, type, subject, content, prev_month_perf, rate, limit) VALUES (benefits_seq.nextVal, 1, '온라인 쇼핑', '- 쿠팡, 티몬, 위메프, G마켓, 11번가, SSG.COM에서 구매 시 10% 할인
-- 건별 10,000원 이상 결제 시 적용', 30, 10, 10000);
-INSERT INTO tblBenefits (benefits_seq, type, subject, content, prev_month_perf, rate, limit) VALUES (benefits_seq.nextVal, 1, '커피/편의점', '- 커피 오프라인 매장
- ※ 커피전문점 업종 오프라인 결제건에 한하여 할인
- ※ 백화점/대형마트 등 일부 입점 매장 제외', 30, 10, 10000);
+--수정 후(혜택번호, 혜택종류(1: 할인, 2: 적립, 3: 항공 마일리지 적립), 혜택명, 혜택 상세, 할인/적립율, 월 할인/적립 한도, 전월실적, 혜택 이미지)
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PT5A', 1, '대중교통', '- 버스, 지하철 이용시 5% 할인
+※ 택시, 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 5, 3000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PT5B', 1, '대중교통', '- 버스, 지하철 이용시 5% 할인
+※ 택시, 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 5, 5000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PT10A', 1, '대중교통', '- 버스, 지하철 이용시 10% 할인
+※ 택시, 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 10, 5000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PTT10A', 1, '대중교통/택시', '- 버스, 지하철, 택시 이용시 10% 할인
+※ 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 10, 4000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1PTT10B', 1, '대중교통/택시', '- 버스, 지하철, 택시 이용시 10% 할인
+※ 시외버스, 고속버스, 공항버스 제외
+※ 버스/지하철 요금할인은 실제 카드 사용일이 아닌 이용대금명세서 상 기재된 이용일을 기준으로 서비스 제공', 10, 5000, 30, '(혜택)대중교통.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1AP50A', 1, '놀이공원', '- 롯데월드 어드벤처 종합이용권 50% 할인
+- 에버랜드 1일 이용권 50% 할인
+※ 전월 이용실적 30만원 이상 시 할인 제공하며, 놀이공원 현장 결제 시 실물카드 소지 필수', 50, 50000, 30, '(혜택)놀이공원.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1FR30A', 1, '패밀리레스토랑', '- 아웃백스테이크하우스
+※ 백화점/대형마트 등 일부 입점 매장 및 아웃백 딜리버리 제외', 30, 30000, 30, '(혜택)음식.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1OS10A', 1, '온라인 쇼핑', '- G마켓, 11번가, SSG.COM의 이용건
+※ 상품권, 여행, 항공권, 티켓, 도서, 별도 팝업 사이트 제외', 10, 10000, 30, '(혜택)온라인결제.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1CG100A', 1, '주유', '- SK에너지, GS칼텍스
+※ LPG, 경유, 등유는 휘발유 가격에 비례하여 할인율 적용
+※ 휘발유 가격은 SK에너지 고시 휘발유가 기준', 3, 5000, 30, '(혜택)주유.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1CS5A', 1, '편의점', '- GS25, CU
+※ 백화점/대형마트 등 일부 입점 매장 제외
+※ 오프라인 매장 일반 결제건에 한함 (온라인 가맹점 제외)', 5, 5000, 30, '(혜택)편의점.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1C5A', 1, '커피', '- 커피(커피/음료전문점 업종)
+※ 상품권(선물하기 등), 선불카드(선불전자지급수단 포함) 제외
+※ 백화점/대형마트 등 일부 입점 매장 제외', 5, 5000, 30, '(혜택)커피.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1C10A', 1, '커피', '- 커피(커피/음료전문점 업종)
+※ 상품권(선물하기 등), 선불카드(선불전자지급수단 포함) 제외
+※ 백화점/대형마트 등 일부 입점 매장 제외', 10, 5000, 30, '(혜택)커피.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1CS50A', 1, '스타벅스', '- 스타벅스(사이렌오더 포함)
+※ 상품권(선물하기 등) 및 선불카드(선불전자지급수단 포함) 충전 제외', 50, 10000, 30, '(혜택)커피.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1D5A', 1, '배달', '- 배달의민족, 요기요', 5, 5000, 30, '(혜택)음식.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C1T10A', 1, '통신', '- 이동통신요금, 유선전화, 인터넷 결합상품 포함
+- 자동납부 시 10% 청구할인', 10, 5000, 30, '(혜택)통신.gif');
+INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('C3KA1A', 3, '대한항공', '- 국내가맹점 적립 1,000원 당 1마일 기본적립', 1, 5000, 30, '(혜택)항공.gif');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+--INSERT INTO tblBenefits (benefits_no, type, subject, content, rate, limit, prev_month_perf, img) VALUES ('' 1, '', '', , , , '');
+
 
 
 -- tblCardBenefit
-INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_seq) VALUES (card_benefit_seq.nextVal, 1, 1);
-INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_seq) VALUES (card_benefit_seq.nextVal, 5, 2);
-INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_seq) VALUES (card_benefit_seq.nextVal, 5, 3);
+--주유
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 33, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 34, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 35, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 36, 'C1CG100A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 68, 'C1CG100A');
+
+--통신
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 37, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 38, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 39, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 40, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 41, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 42, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 43, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 44, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 45, 'C1T10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 69, 'C1T10A');
+
+--패밀리레스토랑
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1FR30A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1FR30A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1FR30A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1FR30A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 68, 'C1FR30A');
+
+--커피
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1C10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1C10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1C10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 13, 'C1CS50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 69, 'C1C5A');
+
+--항공
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 18, 'C3KA1A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 23, 'C3KA1A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 24, 'C3KA1A');
+
+--대중교통
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 67, 'C1PT5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 69, 'C1PT5B');
+
+--편의점
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1CS5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1CS5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1CS5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 67, 'C1CS5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 69, 'C1CS5A');
+
+--배달
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 11, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1D5A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 13, 'C1D5A');
+
+--놀이공원
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 11, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 13, 'C1AP50A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 68, 'C1AP50A');
+
+--온라인쇼핑
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 1, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 2, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 3, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 4, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 5, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 10, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 11, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 12, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 13, 'C1OS10A');
+INSERT INTO tblCardBenefit (card_benefit_seq, card_seq, benefits_no) VALUES (card_benefit_seq.nextVal, 14, 'C1OS10A');
+
+
 
 commit;
