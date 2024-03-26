@@ -45,7 +45,7 @@
 	
 	<select id="getWaitingNumber" parameterType="String" resultType="integer">
 		select coalesce(max(ticket_waiting_status_seq), 0)
-		from tblTicketWaitingStatus where bank_seq = #{bankSeq} and work_seq = #{type}
+		from tblTicketWaitingStatus where bank_seq = #{bankSeq}
 	</select>
 	
 	<insert id="addTicket" parameterType="String">
@@ -65,6 +65,29 @@
 	
 	<delete id="delFavorite" parameterType="String">
 		delete from tblBankFavorite where bank_seq = #{bankSeq} and member_seq = 1
+	</delete>
+	
+	<select id="getfavoriteBanks" parameterType="String" resultType="com.test.bank.ticket.domain.FavoriteBankDTO">
+		select b.bank_name as bankName, b.bank_seq as bankSeq
+			from tblBank b
+			    join tblBankFavorite bf
+			        on b.bank_seq = bf.bank_seq
+			where bf.member_seq = #{userSeq}
+	</select>
+
+	<select id="getTicketList" parameterType="String" resultType="com.test.bank.ticket.domain.TicketWaitingStatusDTO">
+		select b.bank_name as bankName, w.work_name as workName, tws.ticket_waiting_status_seq as ticketWaitingStatusSeq, TO_CHAR(tws.regdate,'YYYY/MM/DD') as regdate, TO_CHAR(tws.regdate,'HH24:MI:SS') as time   
+		from tblTicketWaitingStatus tws
+		    join tblBank b
+		        on b.bank_seq = tws.bank_seq
+		         join tblWork w
+		            on w.work_seq = tws.work_seq
+		where tws.member_seq = #{userSeq}
+		order by ticketWaitingStatusSeq
+	</select>
+	
+	<delete id="delTicket" parameterType="String">
+		delete from tblTicketWaitingStatus where ticket_waiting_status_seq = #{watingSeq}
 	</delete>
 
 </mapper>

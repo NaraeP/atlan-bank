@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.bank.ticket.domain.BankDTO;
+import com.test.bank.ticket.domain.FavoriteBankDTO;
 import com.test.bank.ticket.domain.TicketWaitingStatusDTO;
 import com.test.bank.ticket.domain.WorkListDTO;
 import com.test.bank.ticket.repository.TicketDAO;
@@ -144,6 +145,25 @@ public class TicketService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<FavoriteBankDTO> getfavoriteBanks(String userId) {
+		List<FavoriteBankDTO> favoriteBanks = dao.getfavoriteBanks(userId);
+		
+		return favoriteBanks;
+	}
+	
+	//번호표 발급 목록 조회
+	public List<TicketWaitingStatusDTO> getTicketList(String userSeq) {
+		List<TicketWaitingStatusDTO> ticketList = dao.getTicketList(userSeq);
+		
+		return ticketList;
+	}
+	
+	//번호표 취소
+	public int delTicket(String watingSeq) {
+		System.out.println("watingSeq" + watingSeq);
+		return dao.delTicket(watingSeq);
 	}
 
 	
